@@ -1,0 +1,30 @@
+write a code in vhdl for 8:1 multiplexer
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity mux8_1 is
+    port (
+        i0, i1, i2, i3, i4, i5, i6, i7 : in std_logic;
+        s : in std_logic_vector(2 downto 0);
+        y : out std_logic
+    );
+end entity mux8_1;
+
+architecture behavioral of mux8_1 is
+begin
+    process (i0, i1, i2, i3, i4, i5, i6, i7, s)
+    begin
+        case s is
+            when "000" => y <= i0;
+            when "001" => y <= i1;
+            when "010" => y <= i2;
+            when "011" => y <= i3;
+            when "100" => y <= i4;
+            when "101" => y <= i5;
+            when "110" => y <= i6;
+            when "111" => y <= i7;
+            when others => y <= 'X';
+        end case;
+    end process;
+end architecture behavioral;
